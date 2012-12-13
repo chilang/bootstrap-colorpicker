@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp" ng-controller="ColorCtrl">
     <head>
         <meta charset="utf-8">
         <title>Colorpicker for Bootstrap, from Twitter</title>
@@ -22,7 +22,7 @@
         <![endif]-->
     </head>
 
-    <body>
+    <body ng-style="{'background-color': color4}">
         <div class="container">
             <section id="typeahead">
                 <div class="page-header">
@@ -58,23 +58,23 @@
                     <div class="span8 columns">
                         <h2>Example</h2>
                         <p>Attached to a field with hex format specified via options.</p>
-                        <div class="well">
-                            <input type="text" class="span3" value="#8fff00" id="cp1" >
+                        <div class="well" ng-style="{'background-color': color1}">
+                            <input type="text" class="span3" ng-model="color1" value="{{color1}}" colorpicker data-color-format="hex">                            
                         </div>
                         <p>Attachet to a field with the rgba format specified via data tag.</p>
-                        <div class="well">
-                            <input type="text" class="span3" value="rgb(0,194,255,0.78)" id="cp2" data-color-format="rgba" >
-                        </div>
+                        <div class="well" ng-style="{'background-color': color2}">
+                            <input type="text" class="span3" ng-model="color2" value="{{color2}}" colorpicker data-color-format="rgba" >                            
+                        </div>                    
                         <p>As component.</p>
                         <div class="well">
-                            <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb" id="cp3">
-                                <input type="text" class="span3" value="" readonly >
-                                <span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
+                            <div class="input-append color" data-color="{{color3}}" ng-model="color3" data-color-format="rgb" colorpicker>
+                                <input type="text" class="span3" readonly ng-model="color3" value="{{color3}}" data-color-format="rgb">
+                                <span class="add-on"><i style="background-color: {{color3}}"></i></span>
                             </div>
-                        </div>
+                        </div>                        
                         <p>Using events to work with the color.</p>
                         <div class="well">
-                            <a href="#" class="btn small" id="cp4" data-color-format="hex" data-color="rgb(255, 255, 255)">Change background color</a>
+                            <a href="#" class="btn small" data-color-format="hex" data-color="{{color4}}" ng-model="color4" colorpicker>Change background color</a>
                         </div>
                         <hr>
                         <h2>Using bootstrap-colorpicker.js</h2>
@@ -174,19 +174,8 @@ $(&#039;.colorpicker&#039;).colorpicker().on(&#039;changeColor&#039;, function(e
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/bootstrap-colorpicker.js"></script>
-        <script>
-            $(function(){
-                window.prettyPrint && prettyPrint()
-                $('#cp1').colorpicker({
-                    format: 'hex'
-                });
-                $('#cp2').colorpicker();
-                $('#cp3').colorpicker();
-                var bodyStyle = $('body')[0].style;
-                $('#cp4').colorpicker().on('changeColor', function(ev){
-                    bodyStyle.backgroundColor = ev.color.toHex();
-                });
-            });
-        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js"></script>
+        <script src="./js/directive.js"></script>
+        <script src="./js/color.js"></script>        
     </body>
 </html>
