@@ -1,1 +1,1 @@
-Colorpicker plugin for Twitter Bootstrap, originally written by [Stefan Petre](http://www.eyecon.ro/)
+Colorpicker plugin for Twitter Bootstrap, originally written by [Stefan Petre](http://www.eyecon.ro/) converted to an angular directive based on [angular-bootstrap-colorpicker](https://github.com/aaronsnoswell/angular-bootstrap-colorpicker)
